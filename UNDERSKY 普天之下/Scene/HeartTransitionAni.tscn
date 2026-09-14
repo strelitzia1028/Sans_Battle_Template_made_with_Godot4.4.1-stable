@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://7rctsyt83pbw"]
+
+[ext_resource type="Script" uid="uid://b6r0526s413k4" path="res://Script/HeartTransitionAni.gd" id="1_t4yu8"]
+[ext_resource type="Texture2D" uid="uid://da3o2g0sudv7a" path="res://Asset/heart/red.png" id="2_i83s0"]
+
+[node name="HeartTransitionAni" type="Node2D"]
+script = ExtResource("1_t4yu8")
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture = ExtResource("2_i83s0")

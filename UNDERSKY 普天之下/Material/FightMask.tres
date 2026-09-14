@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0bh3wwinjn7m"]
+
+[ext_resource type="Shader" uid="uid://boit5n1u6rmka" path="res://Material/FightMask.gdshader" id="1_1ot76"]
+
+[resource]
+shader = ExtResource("1_1ot76")

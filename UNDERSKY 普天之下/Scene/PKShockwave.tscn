@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbhe17tloxrdi"]
+
+[ext_resource type="Script" uid="uid://dxorth0mluc5s" path="res://Script/PKShockwave.gd" id="1_nt4lx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nt4lx"]
+
+[node name="PKShockwave" type="CharacterBody2D" node_paths=PackedStringArray("collision", "audio")]
+script = ExtResource("1_nt4lx")
+collision = NodePath("Area2D/CollisionShape2D")
+audio = NodePath("AudioStreamPlayer2D")
+metadata/_custom_type_script = "uid://bfgbnhf2vroue"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nt4lx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

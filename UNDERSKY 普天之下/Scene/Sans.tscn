@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://d25yjfomqq8m8"]
+
+[ext_resource type="Texture2D" uid="uid://bllm6slidu77" path="res://Asset/sans/feet.png" id="1_1jv5g"]
+[ext_resource type="Script" uid="uid://q5wnicodo6yl" path="res://Script/Sans.gd" id="1_6p1i8"]
+[ext_resource type="Texture2D" uid="uid://bb0gt84p0ekt1" path="res://Asset/sans/serious_head.png" id="1_jk277"]
+[ext_resource type="Texture2D" uid="uid://3her2jipmkd6" path="res://Asset/sans/body.png" id="2_6p1i8"]
+[ext_resource type="Texture2D" uid="uid://cbeol3h03p5pa" path="res://Asset/sans/usual_head.png" id="2_ifk3s"]
+[ext_resource type="Script" uid="uid://c6tnmavyt317m" path="res://Script/SansDialogueBox.gd" id="6_jwbvv"]
+[ext_resource type="Texture2D" uid="uid://cv2mmb30lo8p" path="res://Asset/sans/popover.png" id="7_fvjen"]
+[ext_resource type="AudioStream" uid="uid://dotx033o2o0p0" path="res://Audio/snd_txtsans.wav" id="8_fg7gu"]
+[ext_resource type="AudioStream" uid="uid://cbm1ym3cfxm3i" path="res://Audio/snd_select.wav" id="9_x6xrw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwbvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1jv5g")
+}],
+"loop": false,
+"name": &"usual",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3dup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6p1i8")
+}],
+"loop": false,
+"name": &"usual",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bg85v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jk277")
+}],
+"loop": false,
+"name": &"serious",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ifk3s")
+}],
+"loop": false,
+"name": &"usual",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3dup"]
+size = Vector2(55, 70)
+
+[node name="Sans" type="CharacterBody2D" node_paths=PackedStringArray("sans_dialogue_box")]
+script = ExtResource("1_6p1i8")
+sans_dialogue_box = NodePath("SansDialogueBox")
+
+[node name="Feet" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 23)
+sprite_frames = SubResource("SpriteFrames_jwbvv")
+animation = &"usual"
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x3dup")
+animation = &"usual"
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -21)
+sprite_frames = SubResource("SpriteFrames_bg85v")
+animation = &"usual"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x3dup")
+disabled = true
+
+[node name="SansDialogueBox" type="Node2D" parent="."]
+script = ExtResource("6_jwbvv")
+metadata/_custom_type_script = "uid://cgo3oaw572xt8"
+
+[node name="Popover" type="Sprite2D" parent="SansDialogueBox"]
+position = Vector2(85, -20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_fvjen")
+
+[node name="Speak" type="AudioStreamPlayer2D" parent="SansDialogueBox"]
+stream = ExtResource("8_fg7gu")
+max_polyphony = 3
+bus = &"Dialogue"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="SansDialogueBox"]
+stream = ExtResource("9_x6xrw")
+bus = &"UI"

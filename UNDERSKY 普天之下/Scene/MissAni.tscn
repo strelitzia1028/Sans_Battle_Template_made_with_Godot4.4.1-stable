@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0j4nuu6h6fkv"]
+
+[ext_resource type="Texture2D" uid="uid://cf5v8y0gwupcx" path="res://Asset/player attack/spr_dmgmiss_o_0.png" id="1_kxva3"]
+[ext_resource type="Script" uid="uid://d00tmxcyiq6c3" path="res://Script/MissAni.gd" id="2_7mqui"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6p1i8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kxva3")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 5.0
+}]
+
+[node name="MISS" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_6p1i8")
+animation = &"miss"
+script = ExtResource("2_7mqui")

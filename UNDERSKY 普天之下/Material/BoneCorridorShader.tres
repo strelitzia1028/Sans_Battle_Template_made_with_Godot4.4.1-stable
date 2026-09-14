@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blwgr3ebb8ith"]
+
+[ext_resource type="Shader" uid="uid://k3j84agdpxjk" path="res://Material/BoneCorridorShader.gdshader" id="1_8cyax"]
+
+[resource]
+shader = ExtResource("1_8cyax")
+shader_parameter/distort_strength = 0.05
+shader_parameter/wave_frequency = 6.0
+shader_parameter/flow_speed = 1.0
+shader_parameter/depth_falloff = 0.6
+shader_parameter/vertical_twist = 0.02
+shader_parameter/glitch_intensity = 0.04
+shader_parameter/split_offset = 0.03
+shader_parameter/edge_range = 0.3

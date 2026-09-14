@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxflcg8fm5t03"]
+
+[ext_resource type="Script" uid="uid://b70m0pv0y0nk8" path="res://Script/HP.gd" id="1_x2wja"]
+[ext_resource type="Texture2D" uid="uid://ddbwuhprbulyv" path="res://Asset/hp bar/HP.png" id="2_oi1ec"]
+[ext_resource type="Texture2D" uid="uid://7bkowx1lmkn" path="res://Asset/hp bar/under.png" id="2_x2wja"]
+[ext_resource type="Texture2D" uid="uid://tc43lhrhdo1c" path="res://Asset/hp bar/KR.png" id="4_x2wja"]
+
+[node name="HP" type="CanvasLayer" groups=["hp"]]
+script = ExtResource("1_x2wja")
+
+[node name="UnderBar" type="TextureProgressBar" parent="."]
+offset_left = 430.0
+offset_top = 510.0
+offset_right = 522.0
+offset_bottom = 522.0
+value = 100.0
+texture_progress = ExtResource("2_x2wja")
+
+[node name="KRBar" type="TextureProgressBar" parent="."]
+offset_left = 430.0
+offset_top = 510.0
+offset_right = 522.0
+offset_bottom = 522.0
+texture_progress = ExtResource("4_x2wja")
+
+[node name="HPBar" type="TextureProgressBar" parent="."]
+offset_left = 430.0
+offset_top = 510.0
+offset_right = 522.0
+offset_bottom = 522.0
+value = 100.0
+texture_progress = ExtResource("2_oi1ec")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 404.0
+offset_top = 504.0
+offset_right = 427.0
+offset_bottom = 527.0
+
+[node name="LabelNum" type="Label" parent="."]
+offset_left = 564.0
+offset_top = 504.0
+offset_right = 604.0
+offset_bottom = 527.0

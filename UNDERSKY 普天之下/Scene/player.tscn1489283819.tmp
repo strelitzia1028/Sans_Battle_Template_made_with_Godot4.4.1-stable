@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://1v2dg2ljuthx"]
+
+[ext_resource type="Script" uid="uid://crgox0fvye8cm" path="res://Script/player_more_gravity.gd" id="1_xa75v"]
+[ext_resource type="PackedScene" uid="uid://7rctsyt83pbw" path="res://Scene/heart_transition_ani.tscn" id="2_y8w33"]
+[ext_resource type="Texture2D" uid="uid://da3o2g0sudv7a" path="res://Asset/heart/red.png" id="3_xa75v"]
+[ext_resource type="AudioStream" uid="uid://ccnu0dcgf4k0t" path="res://Audio/snd_bell.wav" id="4_58ae2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58ae2"]
+radius = 10.5119
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player", "ani", "spr", "toggle_heart_audio")]
+script = ExtResource("1_xa75v")
+player = NodePath(".")
+ani = NodePath("HeartTransitionAni")
+spr = NodePath("Heart")
+toggle_heart_audio = NodePath("ToggleHeart")
+
+[node name="HeartTransitionAni" parent="." instance=ExtResource("2_y8w33")]
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture = ExtResource("3_xa75v")
+
+[node name="HeartShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_58ae2")
+
+[node name="ToggleHeart" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_58ae2")

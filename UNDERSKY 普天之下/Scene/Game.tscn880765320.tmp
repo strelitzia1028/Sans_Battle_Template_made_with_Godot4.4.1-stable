@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnw4vqu5yh4cs"]
+
+[ext_resource type="Texture2D" uid="uid://wb0ypf42hjja" path="res://Asset/ui/curtain_black.png" id="1_3xgnh"]
+[ext_resource type="AudioStream" uid="uid://bcjbu31ct22u" path="res://Audio/MEGALOVANIA.wav" id="2_48ymf"]
+[ext_resource type="PackedScene" uid="uid://d2g4rk5qyknyi" path="res://Scene/AttackMain.tscn" id="3_cohtu"]
+[ext_resource type="PackedScene" uid="uid://caiwxy7ixbtx7" path="res://Scene/Menu.tscn" id="4_tujvx"]
+[ext_resource type="PackedScene" uid="uid://1v2dg2ljuthx" path="res://Scene/Player.tscn" id="5_2j816"]
+[ext_resource type="PackedScene" uid="uid://d25yjfomqq8m8" path="res://Scene/Sans.tscn" id="5_48ymf"]
+[ext_resource type="PackedScene" uid="uid://diy7wfyfk5a6s" path="res://Scene/Border.tscn" id="6_g3fkh"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 0)
+
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(-2.99998, -1.90735e-06)
+scale = Vector2(0.833333, 1.11111)
+texture = ExtResource("1_3xgnh")
+metadata/_edit_lock_ = true
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2.38419e-07, 2.27374e-13)
+stream = ExtResource("2_48ymf")
+autoplay = true
+bus = &"BGM"
+
+[node name="AttackMain" parent="." instance=ExtResource("3_cohtu")]
+
+[node name="MenuManager" parent="." node_paths=PackedStringArray("border", "player") instance=ExtResource("4_tujvx")]
+border = NodePath("../Border")
+player = NodePath("../Player")
+
+[node name="Sans" parent="." instance=ExtResource("5_48ymf")]
+position = Vector2(0, -175)
+
+[node name="Player" parent="." node_paths=PackedStringArray("menu_node") instance=ExtResource("5_2j816")]
+position = Vector2(0, 50)
+menu_node = NodePath("../MenuManager")
+
+[node name="Border" parent="." instance=ExtResource("6_g3fkh")]
+position = Vector2(0, 50)
+scale = Vector2(1.5, 1.5)
+
+[node name="to_RED" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -200.0
+offset_right = 289.0
+offset_bottom = -169.0
+action_mode = 0
+text = "to_RED"
+
+[node name="to_BLUE" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -160.0
+offset_right = 299.0
+offset_bottom = -129.0
+action_mode = 0
+text = "to_BLUE"
+
+[node name="to_MENU" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -273.0
+offset_right = 330.0
+offset_bottom = -242.0
+text = "to_MENU
+"
+
+[node name="exit_MENU" type="Button" parent="."]
+offset_left = 248.0
+offset_top = -239.0
+offset_right = 340.0
+offset_bottom = -208.0
+text = "exit_MENU"
+
+[node name="gravity_turn_left" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -120.0
+offset_right = 363.0
+offset_bottom = -89.0
+text = "G_TURN_LEFT"
+
+[node name="gravity_turn_right" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -80.0
+offset_right = 375.0
+offset_bottom = -49.0
+text = "G_TURN_RIGHT
+"
+
+[node name="gravity_turn_mirror" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -40.0
+offset_right = 391.0
+offset_bottom = -9.0
+text = "G_TURN_MIRROR
+"
+
+[node name="emit" type="Button" parent="."]
+offset_left = 257.0
+offset_right = 301.0
+offset_bottom = 31.0
+text = "emit"
+
+[node name="clear" type="Button" parent="."]
+offset_left = 257.0
+offset_top = 40.0
+offset_right = 303.0
+offset_bottom = 71.0
+text = "clear"
+
+[node name="small" type="Button" parent="."]
+offset_left = 174.0
+offset_top = -197.0
+offset_right = 224.0
+offset_bottom = -166.0
+text = "small"
+
+[node name="mid" type="Button" parent="."]
+offset_left = 179.0
+offset_top = -159.0
+offset_right = 217.0
+offset_bottom = -128.0
+text = "mid"
+
+[node name="large" type="Button" parent="."]
+offset_left = 175.0
+offset_top = -123.0
+offset_right = 222.0
+offset_bottom = -92.0
+text = "large"
+
+[connection signal="pressed" from="to_RED" to="Player" method="_on_to_red_pressed"]
+[connection signal="pressed" from="to_BLUE" to="Player" method="_on_to_blue_pressed"]
+[connection signal="focus_exited" from="to_MENU" to="Player" method="_on_menu_focus_exited"]
+[connection signal="pressed" from="to_MENU" to="Player" method="_on_to_menu_pressed"]
+[connection signal="pressed" from="exit_MENU" to="Player" method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="gravity_turn_left" to="Player" method="_on_gravity_turn_left_pressed"]
+[connection signal="pressed" from="gravity_turn_right" to="Player" method="_on_gravity_turn_right_pressed"]
+[connection signal="pressed" from="gravity_turn_mirror" to="Player" method="_on_gravity_turn_mirror_pressed"]
+[connection signal="pressed" from="emit" to="AttackMain" method="_on_emit_pressed"]
+[connection signal="pressed" from="clear" to="AttackMain" method="_on_clear_pressed"]
+[connection signal="pressed" from="small" to="Border" method="_on_small_pressed"]
+[connection signal="pressed" from="mid" to="Border" method="_on_mid_pressed"]
+[connection signal="pressed" from="large" to="Border" method="_on_large_pressed"]

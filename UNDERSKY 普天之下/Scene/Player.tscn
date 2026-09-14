@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://1v2dg2ljuthx"]
+
+[ext_resource type="Script" uid="uid://crgox0fvye8cm" path="res://Script/Player.gd" id="1_xa75v"]
+[ext_resource type="PackedScene" uid="uid://cyy864wlfqril" path="res://Scene/DeathScene.tscn" id="2_pmp2f"]
+[ext_resource type="PackedScene" uid="uid://7rctsyt83pbw" path="res://Scene/HeartTransitionAni.tscn" id="2_y8w33"]
+[ext_resource type="Texture2D" uid="uid://da3o2g0sudv7a" path="res://Asset/heart/red.png" id="3_xa75v"]
+[ext_resource type="AudioStream" uid="uid://ccnu0dcgf4k0t" path="res://Audio/snd_bell.wav" id="4_58ae2"]
+[ext_resource type="AudioStream" uid="uid://m41b02bnp2u3" path="res://Audio/dominate2.wav" id="6_pmp2f"]
+[ext_resource type="Script" uid="uid://dwj0q5xtpdo1c" path="res://Script/ObjectPool.gd" id="7_3pik8"]
+[ext_resource type="PackedScene" uid="uid://dbhe17tloxrdi" path="res://Scene/PKShockwave.tscn" id="8_adgam"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58ae2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mud5u"]
+radius = 4.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xa75v")
+death_scene = ExtResource("2_pmp2f")
+
+[node name="HeartTransitionAni" parent="." instance=ExtResource("2_y8w33")]
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture = ExtResource("3_xa75v")
+
+[node name="HeartCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_58ae2")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="DamageCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_mud5u")
+
+[node name="ToggleHeart" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_58ae2")
+bus = &"Player"
+
+[node name="Dominated" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pmp2f")
+volume_db = 10.0
+bus = &"Player"
+
+[node name="ObjectPool" type="Node2D" parent="."]
+script = ExtResource("7_3pik8")
+object_scene = ExtResource("8_adgam")
+initial_size = 1
+max_size = 1
+metadata/_custom_type_script = "uid://dwj0q5xtpdo1c"

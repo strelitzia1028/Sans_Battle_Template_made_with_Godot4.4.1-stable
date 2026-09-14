@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://blboldfcwy8d8"]
+
+[ext_resource type="Script" uid="uid://mcbkd7eo8kab" path="res://Script/BoneCorridor.gd" id="1_4trvx"]
+[ext_resource type="Script" uid="uid://t6ib7giqvwe0" path="res://Script/HurtBox.gd" id="2_h5riq"]
+[ext_resource type="Texture2D" uid="uid://bur4ov03hwcim" path="res://Asset/bone/bone_mid.png" id="2_ia5ks"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_w4iyb"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_h5riq"]
+mesh = SubResource("QuadMesh_w4iyb")
+
+[node name="BoneCorridor" type="CharacterBody2D"]
+script = ExtResource("1_4trvx")
+metadata/_custom_type_script = "uid://bfgbnhf2vroue"
+
+[node name="MultiMeshInstance2D" type="MultiMeshInstance2D" parent="."]
+multimesh = SubResource("MultiMesh_h5riq")
+texture = ExtResource("2_ia5ks")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("2_h5riq")
+metadata/_custom_type_script = "uid://t6ib7giqvwe0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://blboldfcwy8d8"]
+
+[ext_resource type="Script" uid="uid://mcbkd7eo8kab" path="res://Script/BoneCorridor.gd" id="1_4trvx"]
+[ext_resource type="Material" uid="uid://blwgr3ebb8ith" path="res://Material/BoneCorridorShader.tres" id="1_ia5ks"]
+[ext_resource type="PackedScene" uid="uid://b0yo3mvl6elrf" path="res://Scene/Bone.tscn" id="2_h5riq"]
+
+[node name="BoneCorridor" type="CharacterBody2D" node_paths=PackedStringArray("corridor_group", "timer")]
+script = ExtResource("1_4trvx")
+bone_scene = ExtResource("2_h5riq")
+corridor_group = NodePath("CanvasGroup")
+timer = NodePath("Timer")
+shader_1 = ExtResource("1_ia5ks")
+metadata/_custom_type_script = "uid://bfgbnhf2vroue"
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1

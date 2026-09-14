@@ -1,0 +1,241 @@
+[gd_scene load_steps=33 format=3 uid="uid://caiwxy7ixbtx7"]
+
+[ext_resource type="Script" uid="uid://b88utj573516u" path="res://Script/MenuManager.gd" id="1_j5dui"]
+[ext_resource type="Texture2D" uid="uid://cnwv8i86wbv1f" path="res://Asset/ui/spr_fightbt_hollow_0.png" id="2_sh2xt"]
+[ext_resource type="Texture2D" uid="uid://v612yssncrla" path="res://Asset/ui/spr_fightbt_hollow_1.png" id="3_n4oq5"]
+[ext_resource type="Texture2D" uid="uid://df3pjam8x1dwe" path="res://Asset/ui/spr_talkbt_hollow_0.png" id="4_iille"]
+[ext_resource type="Texture2D" uid="uid://dhvutnyke24t5" path="res://Asset/ui/spr_talkbt_hollow_1.png" id="5_rtie7"]
+[ext_resource type="Texture2D" uid="uid://qrojd8t1aihq" path="res://Asset/ui/spr_itembt_hollow_0.png" id="6_mu8fe"]
+[ext_resource type="Texture2D" uid="uid://cn1rpm3nw1uvy" path="res://Asset/ui/spr_itembt_hollow_1.png" id="7_6lmag"]
+[ext_resource type="Texture2D" uid="uid://dmdinib5sbays" path="res://Asset/ui/spr_mercybt_hollow_0.png" id="8_6ck1v"]
+[ext_resource type="Texture2D" uid="uid://defgxs7gc25ku" path="res://Asset/ui/spr_mercybt_hollow_1.png" id="9_fm6f6"]
+[ext_resource type="Script" uid="uid://cgo3oaw572xt8" path="res://Script/DialogueBox.gd" id="10_0cs1l"]
+[ext_resource type="Texture2D" uid="uid://drcyoo0h13y3a" path="res://Asset/ui/spr_target_0.png" id="10_2bpjd"]
+[ext_resource type="Script" uid="uid://cr5tig2xhpxae" path="res://Script/Bag.gd" id="10_j5dui"]
+[ext_resource type="AudioStream" uid="uid://cbm1ym3cfxm3i" path="res://Audio/snd_select.wav" id="10_sh2xt"]
+[ext_resource type="Script" uid="uid://6taunmakvuy" path="res://Script/TargetJudger.gd" id="11_e4fo7"]
+[ext_resource type="Texture2D" uid="uid://b0nfh1408tp25" path="res://Asset/player attack/slice.png" id="12_g58dv"]
+[ext_resource type="AudioStream" uid="uid://cxwis7x6gbes6" path="res://Audio/snd_heal_c.wav" id="12_lgfj1"]
+[ext_resource type="PackedScene" uid="uid://b0j4nuu6h6fkv" path="res://Scene/MissAni.tscn" id="13_0lkoa"]
+[ext_resource type="AudioStream" uid="uid://hvpef4164md7" path="res://Audio/你水平不够.wav" id="13_d3n3g"]
+[ext_resource type="Script" uid="uid://bi1ublcujtmxj" path="res://Script/OtherOptions.gd" id="13_eyp1u"]
+[ext_resource type="AudioStream" uid="uid://dotx033o2o0p0" path="res://Audio/snd_txtsans.wav" id="14_fx1eh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m52p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sh2xt")
+}],
+"loop": false,
+"name": &"0",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n4oq5")
+}],
+"loop": false,
+"name": &"1",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vy0et"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_iille")
+}],
+"loop": false,
+"name": &"0",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rtie7")
+}],
+"loop": false,
+"name": &"1",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqb0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mu8fe")
+}],
+"loop": false,
+"name": &"0",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_6lmag")
+}],
+"loop": false,
+"name": &"1",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gji41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6ck1v")
+}],
+"loop": false,
+"name": &"0",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_fm6f6")
+}],
+"loop": false,
+"name": &"1",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4fo7"]
+size = Vector2(10, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5mp0"]
+atlas = ExtResource("12_g58dv")
+region = Rect2(0, 0, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hswnq"]
+atlas = ExtResource("12_g58dv")
+region = Rect2(26, 0, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f82ge"]
+atlas = ExtResource("12_g58dv")
+region = Rect2(52, 0, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51rg5"]
+atlas = ExtResource("12_g58dv")
+region = Rect2(78, 0, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuy6k"]
+atlas = ExtResource("12_g58dv")
+region = Rect2(104, 0, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irhno"]
+atlas = ExtResource("12_g58dv")
+region = Rect2(130, 0, 26, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eyp1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5mp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hswnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f82ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51rg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuy6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irhno")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"slice",
+"speed": 8.0
+}]
+
+[node name="MenuManager" type="Node2D"]
+script = ExtResource("1_j5dui")
+
+[node name="FIGHT" type="AnimatedSprite2D" parent="."]
+position = Vector2(-274.5, 260)
+sprite_frames = SubResource("SpriteFrames_m52p7")
+animation = &"0"
+
+[node name="ACT" type="AnimatedSprite2D" parent="."]
+position = Vector2(-91.5, 260)
+sprite_frames = SubResource("SpriteFrames_vy0et")
+animation = &"0"
+offset = Vector2(-1, 0)
+
+[node name="ITEM" type="AnimatedSprite2D" parent="."]
+position = Vector2(91.5, 260)
+sprite_frames = SubResource("SpriteFrames_sqb0o")
+animation = &"0"
+
+[node name="MERCY" type="AnimatedSprite2D" parent="."]
+position = Vector2(274.5, 260)
+sprite_frames = SubResource("SpriteFrames_gji41")
+animation = &"0"
+offset = Vector2(1, 0)
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(0, 50)
+texture = ExtResource("10_2bpjd")
+
+[node name="Judger" type="CharacterBody2D" parent="Target" node_paths=PackedStringArray("menu_node", "target", "dialogue_box", "player_attack", "player_attack_audio")]
+position = Vector2(-270, 0)
+script = ExtResource("11_e4fo7")
+menu_node = NodePath("../..")
+target = NodePath("..")
+dialogue_box = NodePath("../../DialogueBox")
+player_attack = NodePath("../PlayerAttack")
+player_attack_audio = NodePath("../PlayerAttack/PlayerAttackAudio")
+
+[node name="JudgmentLine" type="Line2D" parent="Target/Judger"]
+points = PackedVector2Array(0, -70, 0, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Judger"]
+shape = SubResource("RectangleShape2D_e4fo7")
+disabled = true
+
+[node name="PlayerAttack" type="AnimatedSprite2D" parent="Target"]
+position = Vector2(0, -210)
+scale = Vector2(1.75, 1.75)
+sprite_frames = SubResource("SpriteFrames_eyp1u")
+animation = &"slice"
+
+[node name="PlayerAttackAudio" type="AudioStreamPlayer2D" parent="Target/PlayerAttack"]
+stream = ExtResource("13_d3n3g")
+volume_db = 24.0
+bus = &"Player"
+
+[node name="MISS" parent="Target" instance=ExtResource("13_0lkoa")]
+
+[node name="Bag" type="Node2D" parent="." node_paths=PackedStringArray("menu_node", "dialogue_box")]
+script = ExtResource("10_j5dui")
+menu_node = NodePath("..")
+dialogue_box = NodePath("../DialogueBox")
+
+[node name="OtherOptions" type="Node2D" parent="." node_paths=PackedStringArray("menu_node", "dialogue_box")]
+script = ExtResource("13_eyp1u")
+menu_node = NodePath("..")
+dialogue_box = NodePath("../DialogueBox")
+
+[node name="DialogueBox" type="Node2D" parent="."]
+script = ExtResource("10_0cs1l")
+
+[node name="Speak" type="AudioStreamPlayer2D" parent="DialogueBox"]
+stream = ExtResource("14_fx1eh")
+max_polyphony = 3
+bus = &"Dialogue"
+
+[node name="SelectMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_sh2xt")
+bus = &"UI"
+
+[node name="Heal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_lgfj1")
+bus = &"Heal"

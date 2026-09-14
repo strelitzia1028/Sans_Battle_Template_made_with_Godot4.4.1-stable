@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7nk1q1w7t8cq"]
+
+[ext_resource type="Script" uid="uid://t6ib7giqvwe0" path="res://Script/HurtBox.gd" id="1_i1qnn"]
+[ext_resource type="AudioStream" uid="uid://bcdjtclbwyhjm" path="res://Audio/各.wav" id="2_i1qnn"]
+
+[node name="HurtBox" type="Area2D"]
+script = ExtResource("1_i1qnn")
+dmg = 5
+kr = 1
+metadata/_custom_type_script = "uid://t6ib7giqvwe0"
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_i1qnn")
+bus = &"Heal"

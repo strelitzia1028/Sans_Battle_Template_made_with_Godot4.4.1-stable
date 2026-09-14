@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0yo3mvl6elrf"]
+
+[ext_resource type="Script" uid="uid://rj3mbm0cu1o5" path="res://Script/Bone.gd" id="1_5e1jk"]
+[ext_resource type="Texture2D" uid="uid://camesu6isr85v" path="res://Asset/bone/bottom.png" id="2_55j3e"]
+[ext_resource type="Texture2D" uid="uid://cpqhcma80bf6k" path="res://Asset/bone/top.png" id="2_xgakd"]
+[ext_resource type="Texture2D" uid="uid://50ci3kuqpjex" path="res://Asset/bone/mid.png" id="3_o8xub"]
+[ext_resource type="PackedScene" uid="uid://c7nk1q1w7t8cq" path="res://Scene/HurtBox.tscn" id="5_o8xub"]
+
+[node name="Bone" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_5e1jk")
+metadata/_custom_type_script = "uid://bfgbnhf2vroue"
+
+[node name="Top" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -10)
+texture = ExtResource("2_xgakd")
+
+[node name="Mid" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("3_o8xub")
+
+[node name="Bottom" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, 10)
+texture = ExtResource("2_55j3e")
+
+[node name="HurtBox" parent="." instance=ExtResource("5_o8xub")]
+dmg = 0
+kr = 0
+
+[node name="BoneCollision" type="CollisionShape2D" parent="HurtBox"]

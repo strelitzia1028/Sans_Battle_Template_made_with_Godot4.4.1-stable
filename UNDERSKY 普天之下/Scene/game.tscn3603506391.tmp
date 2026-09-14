@@ -1,0 +1,204 @@
+[gd_scene load_steps=20 format=3 uid="uid://bnw4vqu5yh4cs"]
+
+[ext_resource type="Texture2D" uid="uid://wb0ypf42hjja" path="res://Asset/ui/curtain_black.png" id="1_03iqk"]
+[ext_resource type="Script" uid="uid://cwdnk0fos6je7" path="res://Script/autoload_global.gd" id="1_vyw1f"]
+[ext_resource type="PackedScene" uid="uid://0w7o1hwhmnmc" path="res://Scene/gaster_blaster.tscn" id="4_thj8p"]
+[ext_resource type="Script" uid="uid://bbvy6qcuaspys" path="res://Script/button.gd" id="4_yjs1f"]
+[ext_resource type="PackedScene" uid="uid://1v2dg2ljuthx" path="res://Scene/player.tscn" id="5_h8jt7"]
+[ext_resource type="Texture2D" uid="uid://v612yssncrla" path="res://Asset/ui/spr_fightbt_hollow_1.png" id="5_ha7wd"]
+[ext_resource type="Texture2D" uid="uid://cnwv8i86wbv1f" path="res://Asset/ui/spr_fightbt_hollow_0.png" id="6_8f6ah"]
+[ext_resource type="PackedScene" uid="uid://2v643wl2bysf" path="res://Scene/player_attack.tscn" id="6_sagxc"]
+[ext_resource type="PackedScene" uid="uid://diy7wfyfk5a6s" path="res://Scene/border.tscn" id="7_h8jt7"]
+[ext_resource type="Texture2D" uid="uid://df3pjam8x1dwe" path="res://Asset/ui/spr_talkbt_hollow_0.png" id="7_twwsd"]
+[ext_resource type="Texture2D" uid="uid://dhvutnyke24t5" path="res://Asset/ui/spr_talkbt_hollow_1.png" id="7_yjs1f"]
+[ext_resource type="Texture2D" uid="uid://qrojd8t1aihq" path="res://Asset/ui/spr_itembt_hollow_0.png" id="8_c6b8m"]
+[ext_resource type="Texture2D" uid="uid://dmdinib5sbays" path="res://Asset/ui/spr_mercybt_hollow_0.png" id="9_0ka5k"]
+[ext_resource type="Texture2D" uid="uid://cn1rpm3nw1uvy" path="res://Asset/ui/spr_itembt_hollow_1.png" id="9_vyw1f"]
+[ext_resource type="Texture2D" uid="uid://defgxs7gc25ku" path="res://Asset/ui/spr_mercybt_hollow_1.png" id="11_cvvdq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m52p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8f6ah")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ha7wd")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vy0et"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_twwsd")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yjs1f")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqb0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_c6b8m")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vyw1f")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gji41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_0ka5k")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cvvdq")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 0)
+metadata/_edit_lock_ = true
+
+[node name="AutoGlobal" type="Node2D" parent="."]
+script = ExtResource("1_vyw1f")
+
+[node name="Background 1" type="Sprite2D" parent="."]
+position = Vector2(-2.99998, -1.90735e-06)
+scale = Vector2(0.833333, 1.11111)
+texture = ExtResource("1_03iqk")
+metadata/_edit_lock_ = true
+
+[node name="GasterBlaster" parent="." instance=ExtResource("4_thj8p")]
+position = Vector2(-178, -187)
+
+[node name="PlayerAttack" parent="." instance=ExtResource("6_sagxc")]
+position = Vector2(-271, -191)
+
+[node name="BUTTON" type="Node2D" parent="."]
+script = ExtResource("4_yjs1f")
+
+[node name="FIGHT" type="AnimatedSprite2D" parent="BUTTON"]
+position = Vector2(-274.5, 235)
+sprite_frames = SubResource("SpriteFrames_m52p7")
+animation = &"0"
+
+[node name="ACT" type="AnimatedSprite2D" parent="BUTTON"]
+position = Vector2(-91.5, 235)
+sprite_frames = SubResource("SpriteFrames_vy0et")
+animation = &"0"
+
+[node name="ITEM" type="AnimatedSprite2D" parent="BUTTON"]
+position = Vector2(91.5, 235)
+sprite_frames = SubResource("SpriteFrames_sqb0o")
+animation = &"0"
+
+[node name="MERCY" type="AnimatedSprite2D" parent="BUTTON"]
+position = Vector2(274.5, 235)
+sprite_frames = SubResource("SpriteFrames_gji41")
+animation = &"0"
+
+[node name="Player" parent="." instance=ExtResource("5_h8jt7")]
+
+[node name="Border" parent="." instance=ExtResource("7_h8jt7")]
+position = Vector2(0, 50)
+scale = Vector2(1.5, 1.5)
+
+[node name="RED" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -200.0
+offset_right = 289.0
+offset_bottom = -169.0
+action_mode = 0
+text = "RED"
+
+[node name="BLUE" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -160.0
+offset_right = 299.0
+offset_bottom = -129.0
+action_mode = 0
+text = "BLUE"
+
+[node name="MENU" type="Button" parent="."]
+offset_left = -300.0
+offset_top = 140.0
+offset_right = -243.0
+offset_bottom = 171.0
+text = "MENU
+"
+
+[node name="gravity_turn_left" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -120.0
+offset_right = 363.0
+offset_bottom = -89.0
+text = "G_TURN_LEFT"
+
+[node name="gravity_turn_right" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -80.0
+offset_right = 375.0
+offset_bottom = -49.0
+text = "G_TURN_RIGHT
+"
+
+[node name="gravity_turn_mirror" type="Button" parent="."]
+offset_left = 250.0
+offset_top = -40.0
+offset_right = 391.0
+offset_bottom = -9.0
+text = "G_TURN_MIRROR
+"
+
+[node name="emit" type="Button" parent="."]
+offset_left = 257.0
+offset_right = 301.0
+offset_bottom = 31.0
+text = "emit"
+
+[connection signal="pressed" from="RED" to="Player" method="_on_red_pressed"]
+[connection signal="pressed" from="BLUE" to="Player" method="_on_blue_pressed"]
+[connection signal="focus_exited" from="MENU" to="Player" method="_on_menu_focus_exited"]
+[connection signal="pressed" from="MENU" to="Player" method="_on_menu_pressed"]
+[connection signal="pressed" from="gravity_turn_left" to="Player" method="_on_gravity_turn_left_pressed"]
+[connection signal="pressed" from="gravity_turn_right" to="Player" method="_on_gravity_turn_right_pressed"]
+[connection signal="pressed" from="gravity_turn_mirror" to="Player" method="_on_gravity_turn_mirror_pressed"]

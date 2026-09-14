@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://0w7o1hwhmnmc"]
+
+[ext_resource type="Script" uid="uid://dhydshy8ioel5" path="res://Script/GasterBlaster.gd" id="1_nqdxc"]
+[ext_resource type="Texture2D" uid="uid://cyi1vbd8pa52s" path="res://Asset/gb/gb_2.png" id="2_m2678"]
+[ext_resource type="Script" uid="uid://dr6osfbsy1f1d" path="res://Script/GasterStateMachine.gd" id="2_x41ex"]
+[ext_resource type="Texture2D" uid="uid://budx4ffrqaa5b" path="res://Asset/gb/gb_1.png" id="3_nqdxc"]
+[ext_resource type="Script" uid="uid://cibeqdfkmv6oa" path="res://Script/LaserSystem.gd" id="3_vsw13"]
+[ext_resource type="Script" uid="uid://5vxyiepdloxh" path="res://Script/LaserCollision.gd" id="4_nuf8t"]
+[ext_resource type="Texture2D" uid="uid://b50yy3pywq1g3" path="res://Asset/gb/gb_3.png" id="4_x41ex"]
+[ext_resource type="Texture2D" uid="uid://0s8thfkpdhxh" path="res://Asset/gb/gb_4.png" id="5_vsw13"]
+[ext_resource type="Texture2D" uid="uid://dlaw6dtq4uq7t" path="res://Asset/gb/gb_5.png" id="6_nuf8t"]
+[ext_resource type="Texture2D" uid="uid://b1tr8vgm31k37" path="res://Asset/gb/gb_6.png" id="7_nqdxc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x41ex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m2678")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nqdxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x41ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vsw13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nuf8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nqdxc")
+}],
+"loop": false,
+"name": &"gb_normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tupih"]
+size = Vector2(43, 58)
+
+[node name="GasterBlaster" type="CharacterBody2D"]
+script = ExtResource("1_nqdxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="TargetingParticles" type="CPUParticles2D" parent="."]
+
+[node name="LaserEmitter" type="Marker2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_x41ex")
+
+[node name="AttackDelay" type="Timer" parent="StateMachine"]
+
+[node name="LaserSystem" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_vsw13")
+
+[node name="MainLaser" type="Line2D" parent="StateMachine/LaserSystem"]
+position = Vector2(0, 35)
+points = PackedVector2Array(0, 0, 0, 15)
+width = 25.0
+
+[node name="SecondaryLaser1" type="Line2D" parent="StateMachine/LaserSystem"]
+
+[node name="SecondaryLaser2" type="Line2D" parent="StateMachine/LaserSystem"]
+points = PackedVector2Array(-118, -23)
+
+[node name="LaserCollision" type="Area2D" parent="StateMachine/LaserSystem"]
+script = ExtResource("4_nuf8t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x41ex")
+animation = &"gb_normal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_tupih")
+disabled = true

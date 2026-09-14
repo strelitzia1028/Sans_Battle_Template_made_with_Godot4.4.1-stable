@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2g4rk5qyknyi"]
+
+[ext_resource type="Script" uid="uid://ck51xwh5s58xq" path="res://Script/EventManager.gd" id="1_ffn54"]
+[ext_resource type="Script" uid="uid://cbosmqc6pxots" path="res://Script/GbLauncher.gd" id="2_7of88"]
+[ext_resource type="Script" uid="uid://dwj0q5xtpdo1c" path="res://Script/ObjectPool.gd" id="3_qhvfo"]
+[ext_resource type="Script" uid="uid://wkq36xujo0t3" path="res://Script/BoneLauncher.gd" id="4_g6fd2"]
+[ext_resource type="PackedScene" uid="uid://0w7o1hwhmnmc" path="res://Scene/GasterBlaster.tscn" id="4_xlgpi"]
+[ext_resource type="PackedScene" uid="uid://b0yo3mvl6elrf" path="res://Scene/Bone.tscn" id="6_24upm"]
+[ext_resource type="Script" uid="uid://cj5rmyqsx2iax" path="res://Script/RowBoneLauncher.gd" id="7_hp1yb"]
+[ext_resource type="PackedScene" uid="uid://cdqkg4m5l1l0s" path="res://Scene/BoneWall.tscn" id="8_67k6h"]
+[ext_resource type="Script" uid="uid://6ythvlhx0fvs" path="res://Script/BoneCorridorLauncher.gd" id="9_kgqgh"]
+[ext_resource type="PackedScene" uid="uid://blboldfcwy8d8" path="res://Scene/BoneCorridor.tscn" id="10_nh7g1"]
+
+[node name="EventManager" type="Node2D"]
+script = ExtResource("1_ffn54")
+
+[node name="GbLauncher" type="Node2D" parent="."]
+script = ExtResource("2_7of88")
+metadata/_custom_type_script = "uid://cyi7r1j5lt4d4"
+
+[node name="ObjectPool" type="Node2D" parent="GbLauncher"]
+script = ExtResource("3_qhvfo")
+object_scene = ExtResource("4_xlgpi")
+initial_size = 30
+max_size = 30
+metadata/_custom_type_script = "uid://dwj0q5xtpdo1c"
+
+[node name="BoneLauncher" type="Node2D" parent="."]
+z_index = -2
+script = ExtResource("4_g6fd2")
+metadata/_custom_type_script = "uid://cyi7r1j5lt4d4"
+
+[node name="ObjectPool" type="Node2D" parent="BoneLauncher"]
+script = ExtResource("3_qhvfo")
+object_scene = ExtResource("6_24upm")
+initial_size = 100
+max_size = 100
+metadata/_custom_type_script = "uid://dwj0q5xtpdo1c"
+
+[node name="BoneWallLauncher" type="Node2D" parent="."]
+z_index = -2
+script = ExtResource("7_hp1yb")
+metadata/_custom_type_script = "uid://cyi7r1j5lt4d4"
+
+[node name="ObjectPool" type="Node2D" parent="BoneWallLauncher"]
+script = ExtResource("3_qhvfo")
+object_scene = ExtResource("8_67k6h")
+metadata/_custom_type_script = "uid://dwj0q5xtpdo1c"
+
+[node name="BoneCorridorLauncher" type="Node2D" parent="."]
+z_index = -2
+script = ExtResource("9_kgqgh")
+metadata/_custom_type_script = "uid://cyi7r1j5lt4d4"
+
+[node name="ObjectPool" type="Node2D" parent="BoneCorridorLauncher"]
+script = ExtResource("3_qhvfo")
+object_scene = ExtResource("10_nh7g1")
+initial_size = 10
+max_size = 10
+metadata/_custom_type_script = "uid://dwj0q5xtpdo1c"

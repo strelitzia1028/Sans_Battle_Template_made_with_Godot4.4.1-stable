@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://diy7wfyfk5a6s"]
+
+[ext_resource type="Script" uid="uid://bnea6lvpx3w7w" path="res://Script/Border.gd" id="1_m448q"]
+[ext_resource type="Material" uid="uid://b0bh3wwinjn7m" path="res://Material/FightMask.tres" id="2_ny4rt"]
+[ext_resource type="Script" uid="uid://dvohbsar0p2s3" path="res://Script/FightBox.gd" id="3_423i7"]
+
+[node name="Border" type="AnimatableBody2D"]
+script = ExtResource("1_m448q")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(800, 600)
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(800, 600)
+render_target_update_mode = 4
+
+[node name="Cover" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Mask" type="ColorRect" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("border")]
+material = ExtResource("2_ny4rt")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_423i7")
+border = NodePath("../../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="BorderLine" type="Line2D" parent="."]
+points = PackedVector2Array(-80, -80, -80, 80, 80, 80, 80, -80, -82.5, -80)
+width = 5.0
+
+[node name="CollisionLine" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-77, -77, -77, 77, 77, 77, 77, -77, -77, -77)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="BorderCollision" type="CollisionShape2D" parent="Area2D"]

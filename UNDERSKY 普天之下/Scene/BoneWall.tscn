@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdqkg4m5l1l0s"]
+
+[ext_resource type="Script" uid="uid://cid34hrs5kt3j" path="res://Script/RowBone.gd" id="1_arcjg"]
+[ext_resource type="Texture2D" uid="uid://coc0kbp1j5yd" path="res://Asset/bone/row_bone.png" id="2_844ga"]
+[ext_resource type="PackedScene" uid="uid://c7nk1q1w7t8cq" path="res://Scene/HurtBox.tscn" id="3_844ga"]
+[ext_resource type="AudioStream" uid="uid://bniyxs5vfaxdt" path="res://Audio/催.wav" id="4_844ga"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh22v"]
+size = Vector2(586, 400)
+
+[node name="BoneWall" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_arcjg")
+metadata/_custom_type_script = "uid://bfgbnhf2vroue"
+
+[node name="Warn" type="Line2D" parent="."]
+points = PackedVector2Array(-293, 0, 293, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Bone" type="Sprite2D" parent="."]
+position = Vector2(0, 201)
+texture = ExtResource("2_844ga")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_844ga")]
+dmg = 0
+kr = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 201)
+shape = SubResource("RectangleShape2D_xh22v")
+
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_844ga")

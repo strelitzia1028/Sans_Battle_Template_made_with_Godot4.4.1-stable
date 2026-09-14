@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5405adtk5eml"]
+
+[ext_resource type="Script" uid="uid://btbjpuhtrjhki" path="res://Script/Laser.gd" id="1_2mc1n"]
+[ext_resource type="PackedScene" uid="uid://c7nk1q1w7t8cq" path="res://Scene/HurtBox.tscn" id="2_p0igm"]
+
+[node name="Laser" type="RayCast2D"]
+script = ExtResource("1_2mc1n")
+
+[node name="Beam" type="Line2D" parent="."]
+points = PackedVector2Array(0, 40, 0, 1400)
+
+[node name="HurtBox" parent="." instance=ExtResource("2_p0igm")]
+dmg = 0
+kr = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 720)

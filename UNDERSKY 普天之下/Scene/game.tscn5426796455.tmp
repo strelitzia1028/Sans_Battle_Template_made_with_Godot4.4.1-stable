@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnw4vqu5yh4cs"]
+
+[ext_resource type="Texture2D" uid="uid://wb0ypf42hjja" path="res://Asset/ui/curtain_black.png" id="1_03iqk"]
+[ext_resource type="PackedScene" uid="uid://0w7o1hwhmnmc" path="res://Scene/gb.tscn" id="4_thj8p"]
+[ext_resource type="PackedScene" uid="uid://1v2dg2ljuthx" path="res://Scene/player.tscn" id="5_h8jt7"]
+[ext_resource type="PackedScene" uid="uid://2v643wl2bysf" path="res://Scene/player_attack.tscn" id="6_sagxc"]
+[ext_resource type="PackedScene" uid="uid://diy7wfyfk5a6s" path="res://Scene/border.tscn" id="7_h8jt7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background 1" type="Sprite2D" parent="."]
+position = Vector2(-2.99998, -1.90735e-06)
+scale = Vector2(0.833333, 1.11111)
+texture = ExtResource("1_03iqk")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 0)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("5_h8jt7")]
+
+[node name="Gb" parent="." instance=ExtResource("4_thj8p")]
+position = Vector2(-173, -191)
+scale = Vector2(1.5, 1.5)
+
+[node name="PlayerAttack" parent="." instance=ExtResource("6_sagxc")]
+position = Vector2(-271, -191)
+
+[node name="Border" parent="." instance=ExtResource("7_h8jt7")]
+position = Vector2(0, 50)
+scale = Vector2(1.5, 1.5)
+
+[node name="RED" type="Button" parent="."]
+offset_left = 260.0
+offset_top = -200.0
+offset_right = 299.0
+offset_bottom = -169.0
+action_mode = 0
+text = "RED"
+
+[node name="BLUE" type="Button" parent="."]
+offset_left = 260.0
+offset_top = -160.0
+offset_right = 309.0
+offset_bottom = -129.0
+action_mode = 0
+text = "BLUE"
+
+[node name="gravity_turn_left" type="Button" parent="."]
+offset_left = 260.0
+offset_top = -120.0
+offset_right = 309.0
+offset_bottom = -89.0
+text = "G_TURN_LEFT"
+
+[node name="gravity_turn_right" type="Button" parent="."]
+offset_left = 260.0
+offset_top = -80.0
+offset_right = 339.0
+offset_bottom = -49.0
+text = "G_TURN_RIGHT
+"
+
+[connection signal="pressed" from="RED" to="Player" method="_on_red_pressed"]
+[connection signal="pressed" from="BLUE" to="Player" method="_on_blue_pressed"]
+[connection signal="pressed" from="gravity_turn_left" to="Player" method="_on_gravity_turn_left_pressed"]
+[connection signal="pressed" from="gravity_turn_right" to="Player" method="_on_gravity_turn_right_pressed"]

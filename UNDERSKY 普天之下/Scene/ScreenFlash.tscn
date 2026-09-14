@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://divn555ejdjw1"]
+
+[ext_resource type="Script" uid="uid://2ka84w0c54ac" path="res://Script/ScreenFlash.gd" id="1_hxc3j"]
+
+[node name="ScreenFlash" type="CanvasLayer" groups=["screen_flash"]]
+offset = Vector2(400, 300)
+transform = Transform2D(1, 0, 0, 1, 400, 300)
+script = ExtResource("1_hxc3j")
+
+[node name="BlackCurtain" type="ColorRect" parent="."]
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+color = Color(0, 0, 0, 1)
